@@ -167,6 +167,15 @@ int main()
         // turno da IA
         while (1)
         {
+            int tamanho = sizeof(linhaTopo) / sizeof(linhaTopo[0]) - 1;
+            int tamanhoMeio = sizeof(linhaMeio) / sizeof(linhaMeio[0]) - 1;
+            int tamanhoBaixo = sizeof(linhaBaixo) / sizeof(linhaBaixo[0]) - 1; // Subtrai 1 para desconsiderar o '\0'
+            if (todasPosicoesDiferentesTopo(linhaTopo, linhaTopoRef, tamanho) && todasPosicoesDiferentesMeio(linhaMeio, linhaMeioRef, tamanhoMeio) && todasPosicoesDiferentesBaixo(linhaBaixo, linhaBaixoRef, tamanhoBaixo))
+            {
+                printf("O jogo empatou.\n");
+                jogoFinalizado = 1;
+                break;
+            }
             int jogadaRealizada = 0;
             int linhaIa = (rand() % 3) + 1;
             opcaoLinha = linhaIa;
@@ -214,14 +223,9 @@ int main()
                 }
                 break;
             default:
-                printf("ICNncorretoooooooooo");
+                printf("Incorreto.");
                 break;
             }
-            // printf("%s\n", linhaTopo);
-            // printf("%s\n", divisoria);
-            // printf("%s\n", linhaMeio);
-            // printf("%s\n", divisoria);
-            // printf("%s\n", linhaBaixo);
 
             if (jogadaRealizada == 1)
             {
