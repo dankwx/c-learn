@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <windows.h>
 
 int opcaoLinhaF()
 {
@@ -41,6 +44,9 @@ int main()
 {
     int opcaoLinha;
     int opcaoPosicao;
+
+    srand((unsigned int)time(NULL));
+
     // 0 4 8 _
     char linhaTopo[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
     char divisoria[] = {'_', '_', '|', '_', '_', '_', '|', '_', '_', '\0'};
@@ -50,6 +56,7 @@ int main()
     char linhaBaixo[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
     char linhaBaixoRef[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
 
+    // turno do jogador
     while (1)
     {
         printf("%s\n", linhaTopo);
@@ -97,7 +104,85 @@ int main()
         default:
             break;
         }
+
+        // acaba o turno do jogador
+        break;
     }
+    // turno da IA
+    while (1)
+    {
+        int linhaIa = (rand() % 3) + 1;
+        opcaoLinha = linhaIa;
+        printf("\nOpção da linha IA: %d\n", linhaIa);
+        Sleep(5000);
+        int posicaoIa = (rand() % 3) + 1;
+        opcaoPosicao = posicaoIa;
+        printf("\nOpção da posicao IA: %d\n", posicaoIa);
+        Sleep(5000);
+
+        if (opcaoPosicao == 1)
+        {
+            opcaoPosicao = 0;
+        }
+        else if (opcaoPosicao == 2)
+        {
+            opcaoPosicao = 4;
+        }
+        else if (opcaoPosicao == 3)
+        {
+            opcaoPosicao = 8;
+        }
+
+        switch (opcaoLinha)
+        {
+        case 1:
+            if (linhaTopo[opcaoPosicao] == linhaTopoRef[opcaoPosicao])
+            {
+                linhaTopo[opcaoPosicao] = 'o';
+                break;
+            }
+
+            printf("nao daaaaa");
+            break;
+        case 2:
+            if (linhaMeio[opcaoPosicao] == linhaMeioRef[opcaoPosicao])
+            {
+                linhaMeio[opcaoPosicao] = 'o';
+                break;
+            }
+            printf("nao daaaaa");
+            break;
+
+            linhaMeio[opcaoPosicao] = 'o';
+            break;
+        case 3:
+            if (linhaBaixo[opcaoPosicao] == linhaBaixoRef[opcaoPosicao])
+            {
+                linhaBaixo[opcaoPosicao] = 'o';
+                break;
+            }
+            printf("nao daaaaa");
+            break;
+
+            linhaBaixo[opcaoPosicao] = 'o';
+            break;
+
+        default:
+            break;
+        }
+
+        printf("%s\n", linhaTopo);
+        printf("%s\n", divisoria);
+        printf("%s\n", linhaMeio);
+        printf("%s\n", divisoria);
+        printf("%s\n", linhaBaixo);
+        /* code */
+        break;
+    }
+
+    // int r = (rand() % 3) + 1;
+    // Sleep(5000);
+    // printf("\nOpção da IA: %d\n", r);
 
     return 0;
 }
