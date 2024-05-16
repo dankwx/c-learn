@@ -140,8 +140,9 @@ int main()
     srand((unsigned int)time(NULL));
 
     // 0 4 8 _
+    char divisoriaVertical[] = {' ', ' ', '|', ' ', ' ', ' ', '|', ' ', ' ', ' ', '\0'};
     char linhaTopo[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
-    char divisoria[] = {'_', '_', '|', '_', '_', '_', '|', '_', '_', '\0'};
+    char divisoria[] = {'_', '_', '|', '_', '_', '_', '|', '_', '_', '_', '\0'};
     char linhaTopoRef[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
     char linhaMeio[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
     char linhaMeioRef[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
@@ -190,11 +191,13 @@ int main()
         // turno do jogador
         while (1)
         {
+            printf("%s\n", divisoriaVertical);
             printf("%s\n", linhaTopo);
             printf("%s\n", divisoria);
             printf("%s\n", linhaMeio);
             printf("%s\n", divisoria);
-            printf("%s\n\n", linhaBaixo);
+            printf("%s\n", linhaBaixo);
+            printf("%s\n", divisoriaVertical);
             opcaoLinha = opcaoLinhaF();
             opcaoPosicao = opcaoPosicaoF();
 
@@ -312,6 +315,7 @@ int main()
             break;
         }
     }
-
+    printf("Pressione alguma tecla para continuar");
+    _getch();
     return 0;
 }
