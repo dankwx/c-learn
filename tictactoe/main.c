@@ -41,8 +41,9 @@ int main()
 {
     int opcaoLinha;
     int opcaoPosicao;
-    // 0 4 8
+    // 0 4 8 _
     char linhaTopo[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
+    char divisoria[] = {'_', '_', '|', '_', '_', '_', '|', '_', '_', '\0'};
     char linhaTopoRef[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
     char linhaMeio[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
     char linhaMeioRef[] = {'y', ' ', '|', ' ', 'y', ' ', '|', ' ', 'y', '\0'};
@@ -52,7 +53,9 @@ int main()
     while (1)
     {
         printf("%s\n", linhaTopo);
+        printf("%s\n", divisoria);
         printf("%s\n", linhaMeio);
+        printf("%s\n", divisoria);
         printf("%s\n", linhaBaixo);
         opcaoLinha = opcaoLinhaF();
         opcaoPosicao = opcaoPosicaoF();
